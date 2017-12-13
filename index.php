@@ -33,17 +33,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $DB_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             try {
-                $stmt = $DB_con->prepare('SELECT `Name`, `Passwort` FROM `Konsument` WHERE `Name` = :username');
+                $stmt = $DB_con->prepare('SELECT `Kuerzel`, `Passwort`, `Rolle` FROM `Konsument` WHERE `Kuerzel` = :username');
                 $stmt->execute(array(':username' => $username));
                 $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
                 if ($stmt->rowCount() > 0) {
                     // var_dump($userRow);
-                    session_start();
-                    $_SESSION['username'] = $username;
-                    header("location: welcome.php");
+                    if ($password == $userRow['Passwort']) {
+                        session_start();
+                        $_SESSION['username'] = $username;
+                        header("location: welcome.php");
+                    }
+                    else {
+                        echo '<div class="alert-danger">Bitte geben Sie einen validen Benutzernamen und Passwort ein.</div>';
+                    }
 
                 } else {
-                    echo 'Bitte geben Sie einen validen Usernamen oder ein valides Passwort ein';
+                    echo '<div class="alert-warning">Da ist wohl etwas schief gelaufen. Bitte versuchen Sie es erneut.</div>';
                 }
             } catch (PDOException $e) {
                 echo $e->getMessage();
