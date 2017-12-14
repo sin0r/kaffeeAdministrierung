@@ -1,8 +1,20 @@
 body {
+    text-align: center;
     font: 14px sans-serif;
+    background-color: #fff;
+    background-image: url("coffeeImage.jpg");
+    background-position: right bottom;
+    background-size: 25%;
+    background-repeat: no-repeat;
 }
 
 .wrapper {
     width: 350px;
     padding: 20px;
+    margin: auto;
+}
+
+.content {
+    max-width: 500px;
+    margin: auto;
 }

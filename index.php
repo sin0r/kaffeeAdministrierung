@@ -42,13 +42,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         session_start();
                         $_SESSION['username'] = $username;
                         header("location: welcome.php");
-                    }
-                    else {
+                    } else {
                         echo '<div class="alert-danger">Bitte geben Sie einen validen Benutzernamen und Passwort ein.</div>';
                     }
 
                 } else {
-                    echo '<div class="alert-warning">Da ist wohl etwas schief gelaufen. Bitte versuchen Sie es erneut.</div>';
+                    echo '<div class="alert-danger">Bitte geben Sie einen validen Benutzernamen und Passwort ein.</div>';
                 }
             } catch (PDOException $e) {
                 echo $e->getMessage();
@@ -67,7 +66,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <span class="help-block"><?php echo $password_err; ?></span>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Submit">
+            <input type="submit" class="btn btn-primary" value="Login">
         </div>
     </form>
 </div>
