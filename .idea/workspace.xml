@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd6bf4ea-fd15-40e6-9cc6-cf2325c6252d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/addBudget.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/logout.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/addBudgetSuccess.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.css" afterPath="$PROJECT_DIR$/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/addBudget.php" afterPath="$PROJECT_DIR$/addBudget.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/welcome.php" afterPath="$PROJECT_DIR$/welcome.php" />
     </list>
     <ignored path="kaffeeAdministrierung.iws" />
@@ -32,10 +30,10 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.307692">
-              <caret line="70" column="21" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="73" column="18" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="71" />
               <folding>
-                <marker date="1513258330481" expanded="true" signature="923:1005" placeholder="SELECT `Kuer... Konsument" />
+                <marker date="1513593335109" expanded="true" signature="923:1005" placeholder="SELECT `Kuer... Konsument" />
               </folding>
             </state>
           </provider>
@@ -56,13 +54,13 @@
       <file leaf-file-name="welcome.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/welcome.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-65.38461">
-              <caret line="100" column="32" selection-start-line="100" selection-start-column="32" selection-end-line="100" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="36" column="8" selection-start-line="11" selection-start-column="4" selection-end-line="36" selection-end-column="8" />
               <folding>
-                <marker date="1513258338274" expanded="true" signature="1907:1996" placeholder="SELECT konsu... konsument" />
-                <marker date="1513258338274" expanded="true" signature="2289:2443" placeholder="SELECT konsu... buchungen" />
-                <marker date="1513258338274" expanded="true" signature="2629:2697" placeholder="..." />
-                <marker date="1513258338274" expanded="true" signature="3450:3656" placeholder="SELECT konsu... buchungen" />
+                <marker date="1513591057342" expanded="true" signature="1910:1999" placeholder="SELECT konsu... konsument" />
+                <marker date="1513591057342" expanded="true" signature="2292:2446" placeholder="SELECT konsu... buchungen" />
+                <marker date="1513591057342" expanded="true" signature="2632:2700" placeholder="..." />
+                <marker date="1513591057342" expanded="true" signature="3453:3659" placeholder="SELECT konsu... buchungen" />
               </folding>
             </state>
           </provider>
@@ -71,11 +69,24 @@
       <file leaf-file-name="addBudget.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/addBudget.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5496536">
-              <caret line="28" column="64" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="64" />
+            <state vertical-scroll-proportion="-0.09930716">
+              <caret line="56" column="92" selection-start-line="56" selection-start-column="92" selection-end-line="56" selection-end-column="92" />
               <folding>
                 <element signature="e#6#88#0#PHP" expanded="true" />
+                <marker date="1513594282429" expanded="true" signature="1842:1912" placeholder="SELECT konsu... konsument" />
+                <marker date="1513594282429" expanded="true" signature="2165:2333" placeholder="SELECT buchu... buchungen" />
+                <marker date="1513594282429" expanded="true" signature="4332:4457" placeholder="INSERT INTO buchungen... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addBudgetSuccess.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/addBudgetSuccess.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -84,7 +95,7 @@
         <entry file="file://$PROJECT_DIR$/main.css">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+              <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -99,9 +110,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/logout.php" />
-        <option value="$PROJECT_DIR$/main.css" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/welcome.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/main.css" />
+        <option value="$PROJECT_DIR$/addBudgetSuccess.php" />
         <option value="$PROJECT_DIR$/addBudget.php" />
       </list>
     </option>
@@ -166,8 +178,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -259,9 +271,71 @@
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="73" column="18" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="71" />
+          <folding>
+            <marker date="1513593335109" expanded="true" signature="923:1005" placeholder="SELECT `Kuer... Konsument" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="43" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
+          <folding>
+            <element signature="e#6#88#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/welcome.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="8" selection-start-line="11" selection-start-column="4" selection-end-line="36" selection-end-column="8" />
+          <folding>
+            <marker date="1513591057342" expanded="true" signature="1910:1999" placeholder="SELECT konsu... konsument" />
+            <marker date="1513591057342" expanded="true" signature="2292:2446" placeholder="SELECT konsu... buchungen" />
+            <marker date="1513591057342" expanded="true" signature="2632:2700" placeholder="..." />
+            <marker date="1513591057342" expanded="true" signature="3453:3659" placeholder="SELECT konsu... buchungen" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addBudget.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1513258330481" expanded="true" signature="923:1005" placeholder="SELECT `Kuer... Konsument" />
+            <element signature="e#6#88#0#PHP" expanded="true" />
+            <marker date="1513594282429" expanded="true" signature="1842:1912" placeholder="SELECT konsu... konsument" />
+            <marker date="1513594282429" expanded="true" signature="2165:2333" placeholder="SELECT buchu... buchungen" />
+            <marker date="1513594282429" expanded="true" signature="4332:4457" placeholder="INSERT INTO buchungen... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addBudgetSuccess.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1513593335109" expanded="true" signature="923:1005" placeholder="SELECT `Kuer... Konsument" />
           </folding>
         </state>
       </provider>
@@ -281,10 +355,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
           <folding>
-            <marker date="1513258338274" expanded="true" signature="1907:1996" placeholder="SELECT konsu... konsument" />
-            <marker date="1513258338274" expanded="true" signature="2289:2443" placeholder="SELECT konsu... buchungen" />
-            <marker date="1513258338274" expanded="true" signature="2629:2697" placeholder="..." />
-            <marker date="1513258338274" expanded="true" signature="3450:3656" placeholder="SELECT konsu... buchungen" />
+            <marker date="1513591057342" expanded="true" signature="1910:1999" placeholder="SELECT konsu... konsument" />
+            <marker date="1513591057342" expanded="true" signature="2292:2446" placeholder="SELECT konsu... buchungen" />
+            <marker date="1513591057342" expanded="true" signature="2632:2700" placeholder="..." />
+            <marker date="1513591057342" expanded="true" signature="3453:3659" placeholder="SELECT konsu... buchungen" />
           </folding>
         </state>
       </provider>
@@ -295,6 +369,9 @@
           <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
           <folding>
             <element signature="e#6#88#0#PHP" expanded="true" />
+            <marker date="1513594282429" expanded="true" signature="1842:1912" placeholder="SELECT konsu... konsument" />
+            <marker date="1513594282429" expanded="true" signature="2165:2333" placeholder="SELECT buchu... buchungen" />
+            <marker date="1513594282429" expanded="true" signature="4332:4457" placeholder="INSERT INTO buchungen... " />
           </folding>
         </state>
       </provider>
@@ -312,7 +389,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="50" column="124" selection-start-line="50" selection-start-column="124" selection-end-line="50" selection-end-column="124" />
           <folding>
-            <marker date="1513258330481" expanded="true" signature="923:1005" placeholder="SELECT `Kuer... Konsument" />
+            <marker date="1513593335109" expanded="true" signature="923:1005" placeholder="SELECT `Kuer... Konsument" />
           </folding>
         </state>
       </provider>
@@ -322,10 +399,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1513258338274" expanded="true" signature="1907:1996" placeholder="SELECT konsu... konsument" />
-            <marker date="1513258338274" expanded="true" signature="2289:2443" placeholder="SELECT konsu... buchungen" />
-            <marker date="1513258338274" expanded="true" signature="2629:2697" placeholder="..." />
-            <marker date="1513258338274" expanded="true" signature="3450:3656" placeholder="SELECT konsu... buchungen" />
+            <marker date="1513591057342" expanded="true" signature="1910:1999" placeholder="SELECT konsu... konsument" />
+            <marker date="1513591057342" expanded="true" signature="2292:2446" placeholder="SELECT konsu... buchungen" />
+            <marker date="1513591057342" expanded="true" signature="2632:2700" placeholder="..." />
+            <marker date="1513591057342" expanded="true" signature="3453:3659" placeholder="SELECT konsu... buchungen" />
           </folding>
         </state>
       </provider>
@@ -335,7 +412,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
           <folding>
-            <marker date="1513258330481" expanded="true" signature="923:1005" placeholder="SELECT `Kuer... Konsument" />
+            <marker date="1513593335109" expanded="true" signature="923:1005" placeholder="SELECT `Kuer... Konsument" />
           </folding>
         </state>
       </provider>
@@ -345,19 +422,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1513258338274" expanded="true" signature="1907:1996" placeholder="SELECT konsu... konsument" />
-            <marker date="1513258338274" expanded="true" signature="2289:2443" placeholder="SELECT konsu... buchungen" />
-            <marker date="1513258338274" expanded="true" signature="2629:2697" placeholder="..." />
-            <marker date="1513258338274" expanded="true" signature="3450:3656" placeholder="SELECT konsu... buchungen" />
+            <marker date="1513591057342" expanded="true" signature="1910:1999" placeholder="SELECT konsu... konsument" />
+            <marker date="1513591057342" expanded="true" signature="2292:2446" placeholder="SELECT konsu... buchungen" />
+            <marker date="1513591057342" expanded="true" signature="2632:2700" placeholder="..." />
+            <marker date="1513591057342" expanded="true" signature="3453:3659" placeholder="SELECT konsu... buchungen" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -371,35 +440,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
+    <entry file="file://$PROJECT_DIR$/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.307692">
-          <caret line="70" column="21" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="21" />
-          <folding>
-            <marker date="1513258330481" expanded="true" signature="923:1005" placeholder="SELECT `Kuer... Konsument" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/welcome.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-65.38461">
-          <caret line="100" column="32" selection-start-line="100" selection-start-column="32" selection-end-line="100" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="8" selection-start-line="11" selection-start-column="4" selection-end-line="36" selection-end-column="8" />
           <folding>
-            <marker date="1513258338274" expanded="true" signature="1907:1996" placeholder="SELECT konsu... konsument" />
-            <marker date="1513258338274" expanded="true" signature="2289:2443" placeholder="SELECT konsu... buchungen" />
-            <marker date="1513258338274" expanded="true" signature="2629:2697" placeholder="..." />
-            <marker date="1513258338274" expanded="true" signature="3450:3656" placeholder="SELECT konsu... buchungen" />
+            <marker date="1513591057342" expanded="true" signature="1910:1999" placeholder="SELECT konsu... konsument" />
+            <marker date="1513591057342" expanded="true" signature="2292:2446" placeholder="SELECT konsu... buchungen" />
+            <marker date="1513591057342" expanded="true" signature="2632:2700" placeholder="..." />
+            <marker date="1513591057342" expanded="true" signature="3453:3659" placeholder="SELECT konsu... buchungen" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addBudgetSuccess.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="73" column="18" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="71" />
+          <folding>
+            <marker date="1513593335109" expanded="true" signature="923:1005" placeholder="SELECT `Kuer... Konsument" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/addBudget.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5496536">
-          <caret line="28" column="64" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="64" />
+        <state vertical-scroll-proportion="-0.09930716">
+          <caret line="56" column="92" selection-start-line="56" selection-start-column="92" selection-end-line="56" selection-end-column="92" />
           <folding>
             <element signature="e#6#88#0#PHP" expanded="true" />
+            <marker date="1513594282429" expanded="true" signature="1842:1912" placeholder="SELECT konsu... konsument" />
+            <marker date="1513594282429" expanded="true" signature="2165:2333" placeholder="SELECT buchu... buchungen" />
+            <marker date="1513594282429" expanded="true" signature="4332:4457" placeholder="INSERT INTO buchungen... " />
           </folding>
         </state>
       </provider>
