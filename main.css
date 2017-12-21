@@ -19,3 +19,14 @@ body {
     max-width: 550px;
     margin: auto;
 }
+
+.border {
+    padding: 5px;
+    margin: 5px;
+}
+
+
+.scrollable {
+    height: 90%;
+    overflow: auto;
+}

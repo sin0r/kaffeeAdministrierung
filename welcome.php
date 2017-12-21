@@ -5,6 +5,7 @@
  * Date: 11.12.2017
  * Time: 11:17
  */
+require_once 'database.php';
 session_start();
 $username = $_SESSION["username"];
 
@@ -27,6 +28,7 @@ $username = $_SESSION["username"];
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="index.php">Startseite</a>
+                <a class="nav-item nav-link" href="testSite.php">testsite</a>
                 <a class="nav-item nav-link active" href="welcome.php">Home</a>
                 <a class="nav-item nav-link" href="addBudget.php">Guthaben aufladen</a>
                 <a class="nav-item nav-link" href="logout.php">Logout</a>
@@ -40,15 +42,16 @@ $username = $_SESSION["username"];
 
 echo '<div class="content">';
 try {
+
+    $database = new database("localhost", "root", "", "coffeeAdministration");
     $DB_host = "localhost";
     $DB_user = "root";
     $DB_pass = "";
     $DB_name = "coffeeAdministration";
 
-    $DB_con = new PDO("mysql:host={$DB_host};dbname={$DB_name}", $DB_user, $DB_pass);
-    $DB_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
     try {
+        $DB_con = new PDO("mysql:host={$DB_host};dbname={$DB_name}", $DB_user, $DB_pass);
+        $DB_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $statementToGetUserRoleAndName = $DB_con->prepare('SELECT konsument.Rolle, konsument.Name FROM konsument WHERE konsument.Kuerzel = :username');
         $statementToGetUserRoleAndName->bindParam(':username', $username);
         $statementToGetUserRoleAndName->execute();
