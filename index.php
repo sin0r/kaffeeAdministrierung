@@ -33,12 +33,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $DB_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             try {
-                $stmt = $DB_con->prepare('SELECT `Kuerzel`, `Passwort`, `Rolle` FROM `Konsument` WHERE `Kuerzel` = :username');
+                $stmt = $DB_con->prepare('SELECT `Name`, `Pin`, `Rolle` FROM `Konsument` WHERE `Name` = :username');
                 $stmt->execute(array(':username' => $username));
                 $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
                 if ($stmt->rowCount() > 0) {
                     // var_dump($userRow);
-                    if ($password == $userRow['Passwort']) {
+                    if ($password == $userRow['Pin']) {
                         session_start();
                         $_SESSION['username'] = $username;
                         header("location: welcome.php");
@@ -73,12 +73,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <p>Bitte geben Sie Ihre Login-Daten ein.</p>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-            <label>Kürzel:</label>
+            <label>Name:</label>
             <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
             <span class="help-block"><?php echo $username_err; ?></span>
         </div>
         <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-            <label>Password:</label>
+            <label>Pin:</label>
             <input type="password" name="password" class="form-control">
             <span class="help-block"><?php echo $password_err; ?></span>
         </div>

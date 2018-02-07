@@ -52,13 +52,13 @@ try {
     try {
         $DB_con = new PDO("mysql:host={$DB_host};dbname={$DB_name}", $DB_user, $DB_pass);
         $DB_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $statementToGetUserRoleAndName = $DB_con->prepare('SELECT konsument.Rolle, konsument.Name FROM konsument WHERE konsument.Kuerzel = :username');
+        $statementToGetUserRoleAndName = $DB_con->prepare('SELECT konsument.Rolle, konsument.Name FROM konsument WHERE konsument.Name = :username');
         $statementToGetUserRoleAndName->bindParam(':username', $username);
         $statementToGetUserRoleAndName->execute();
         $roleAndName = $statementToGetUserRoleAndName->fetch(PDO::FETCH_ASSOC);
 
         if ($roleAndName['Rolle'] == '1') {
-            $stmt = $DB_con->prepare('SELECT konsument.Kuerzel, konsument.Name, buchungen.Betrag, buchungen.Datum FROM `buchungen` INNER JOIN konsument ON buchungen.Konsument_fk = konsument.ID');
+            $stmt = $DB_con->prepare('SELECT konsument.ID, konsument.Name, buchung.Betrag, buchung.Datum FROM `buchung` INNER JOIN konsument ON buchung.KonsumentID = konsument.ID');
             $stmt->execute();
             $userRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -81,8 +81,8 @@ try {
                 echo 'Es wurden bisher noch keine Transaktionen ausgeführt.';
             }
         } else {
-            $stmt = $DB_con->prepare('SELECT konsument.Kuerzel, konsument.Name, buchungen.Betrag, buchungen.Datum FROM `buchungen` INNER JOIN konsument ON buchungen.Konsument_fk = konsument.ID
-                WHERE konsument.Kuerzel = :username');
+            $stmt = $DB_con->prepare('SELECT konsument.ID, konsument.Name, buchung.Betrag, buchung.Datum FROM `buchung` INNER JOIN konsument ON buchung.KonsumentID = konsument.ID
+                WHERE konsument.Name = :username');
             $stmt->bindParam(':username', $username);
             $stmt->execute();
             $userRow = $stmt->fetchAll(PDO::FETCH_ASSOC);

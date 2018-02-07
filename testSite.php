@@ -21,7 +21,7 @@ $DB_pass = "";
 $DB_name = "coffeeAdministration";
 $DB_con = new PDO("mysql:host={$DB_host};dbname={$DB_name}", $DB_user, $DB_pass);
 $DB_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$statementToGetUserRoleAndName = $DB_con->prepare('SELECT konsument.Rolle, konsument.Name FROM konsument WHERE konsument.Kuerzel = :username');
+$statementToGetUserRoleAndName = $DB_con->prepare('SELECT konsument.Rolle, konsument.Name FROM konsument WHERE konsument.Name = :username');
 $statementToGetUserRoleAndName->bindParam(':username', $username);
 $statementToGetUserRoleAndName->execute();
 $roleAndName = $statementToGetUserRoleAndName->fetch(PDO::FETCH_ASSOC);

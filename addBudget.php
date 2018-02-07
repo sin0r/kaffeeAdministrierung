@@ -45,7 +45,7 @@ Hier können Sie Ihr Guthaben um den gewünschten Betrag erweitern.
     $DB_con = new PDO("mysql:host={$DB_host};dbname={$DB_name}", $DB_user, $DB_pass);
     $DB_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmtToGetConsumerId = $DB_con->prepare('SELECT konsument.ID from konsument WHERE konsument.Kuerzel = :username');
+    $stmtToGetConsumerId = $DB_con->prepare('SELECT konsument.ID from konsument WHERE konsument.Name = :username');
     $stmtToGetConsumerId->execute([':username' => $username]);
     $userRowToGetConsumerId = $stmtToGetConsumerId->fetch(PDO::FETCH_ASSOC);
     $userId = $userRowToGetConsumerId['ID'];
@@ -53,8 +53,8 @@ Hier können Sie Ihr Guthaben um den gewünschten Betrag erweitern.
     try {
 
         try {
-            $stmt = $DB_con->prepare('SELECT buchungen.Betrag, buchungen.art_fk FROM `buchungen`
-            INNER JOIN konsument ON buchungen.Konsument_fk = konsument.ID WHERE konsument.Kuerzel = :username');
+            $stmt = $DB_con->prepare('SELECT buchung.Betrag, buchung.BuchungsArt FROM `buchung`
+            INNER JOIN konsument ON buchung.KonsumentID = konsument.ID WHERE konsument.Name = :username');
             $stmt->execute(array(':username' => $username));
             $userRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $budget = 0;
@@ -105,8 +105,8 @@ Hier können Sie Ihr Guthaben um den gewünschten Betrag erweitern.
 </html>
 <?php
 if(isset($_POST['doTransaction'])){ // button name
-    $transactionStmt = $DB_con->prepare('INSERT INTO buchungen (Datum, Betrag, Konsument_fk, art_fk)
-        VALUES (CURRENT_TIMESTAMP, :betrag, :konsumentId, :artId)');
+    $transactionStmt = $DB_con->prepare('INSERT INTO buchung (KonsumentID, BuchungsArt, Betrag, Datum)
+        VALUES (:konsumentId, :artId, :betrag, CURRENT_TIMESTAMP)');
     $transactionStmt->execute([':betrag' => $_POST["amount"], ':konsumentId' => $userId, 'artId' => $_POST['transaction']]);
     echo 'Ihr Guthaben wurde erfolgreich aktualisiert.';
     //header("Location = addBudgetSuccess.php");
