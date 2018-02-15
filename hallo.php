@@ -45,6 +45,23 @@ $username = $_SESSION["username"];
     $DB_name = "coffeeAdministration";
     $DB_con = new PDO("mysql:host={$DB_host};dbname={$DB_name}", $DB_user, $DB_pass);
     $DB_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+
+    $stmtForRealAmount = "SELECT Istguthaben, Datum FROM Gesamtguthaben";
+    $getRealAmountStmt = $DB_con->prepare($stmtForRealAmount);
+    $getRealAmountStmt->execute();
+    $userRowRealAmount = $getRealAmountStmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $stmtForShouldAmount = "SELECT Sollguthaben, Datum FROM Gesamtguthaben";
+    $getShouldAmountStmt = $DB_con->prepare($stmtForShouldAmount);
+    $getShouldAmountStmt->execute();
+    $userRowShouldAmount = $getShouldAmountStmt->fetchAll(PDO::FETCH_ASSOC);
+
+    var_dump($userRowRealAmount);
+
+
+
     $statementToGetUserRoleAndName = $DB_con->prepare('SELECT Konsument.Rolle, Konsument.Name FROM Konsument WHERE Konsument.Name = :username');
     $statementToGetUserRoleAndName->bindParam(':username', $username);
     $statementToGetUserRoleAndName->execute();
@@ -207,10 +224,34 @@ $username = $_SESSION["username"];
             ?>
         </div>
         <div class="col-sm-3 well">
-           <?php if ($roleAndName['Rolle'] == 'Admin') {
+            <h6>Guthabenübersicht:</h6>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <div class="form-group <?php echo (!empty($budget_err)) ? 'has-error' : ''; ?>">
+                    <input type="text" name="shouldamount" placeholder="Sollguthaben" class="form-control col-xs-2">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Abschicken" name="updateShouldamount">
+                </div>
+            </form>
+            <?php
+            if(isset($_POST['updateShouldamount'])){ // button name
+                $realAmountStmt = $DB_con->prepare("SELECT SUM(CASE WHEN Buchung.BuchungsArt = 1 THEN Buchung.Betrag ELSE 0 END) as Total, 
+SUM(CASE WHEN Buchung.BuchungsArt = 2 THEN Buchung.Betrag ELSE 0 END) as Abzuege 
+FROM Buchung;");
+                $realAmountStmt->execute();
+                $userRow = $realAmountStmt->fetch(PDO::FETCH_ASSOC);
+                $realAmount = $userRow['Total'] - $userRow['Abzuege'];
 
-           }
-           ?>
+                $amountStmt = $DB_con->prepare('INSERT INTO Gesamtguthaben (Sollguthaben, Istguthaben, Datum)
+                VALUES (:shouldamount, :realamount, CURRENT_TIMESTAMP)');
+                $amountStmt->execute([':shouldamount' => $_POST["shouldamount"], ':realamount' => $realAmount]);
+               echo 'Das Guthaben wurde erfolgreich übermittelt.';
+        //       header('Location: ' . $_SERVER['PHP_SELF']);
+          //      die('<META http-equiv="refresh" content="0;URL=' . $_SERVER['PHP_SELF'] . '">');
+            }?>
+
+           <img src="generateGraph.php" />
+
         </div>
     </div>
 

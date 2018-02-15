@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     if ($password == $userRow['Pin']) {
                         session_start();
                         $_SESSION['username'] = $username;
-                        header("location: hallo.php");
+                        header("location: welcome.php");
                     } else {
                         echo '<div class="alert-danger">Bitte geben Sie einen validen Benutzernamen und Passwort ein.</div>';
                     }
