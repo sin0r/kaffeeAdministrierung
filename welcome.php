@@ -52,13 +52,13 @@ try {
     try {
         $DB_con = new PDO("mysql:host={$DB_host};dbname={$DB_name}", $DB_user, $DB_pass);
         $DB_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $statementToGetUserRoleAndName = $DB_con->prepare('SELECT konsument.Rolle, konsument.Name FROM konsument WHERE konsument.Name = :username');
+        $statementToGetUserRoleAndName = $DB_con->prepare('SELECT Konsument.Rolle, Konsument.Name FROM Konsument WHERE Konsument.Name = :username');
         $statementToGetUserRoleAndName->bindParam(':username', $username);
         $statementToGetUserRoleAndName->execute();
         $roleAndName = $statementToGetUserRoleAndName->fetch(PDO::FETCH_ASSOC);
 
-        if ($roleAndName['Rolle'] == '1') {
-            $stmt = $DB_con->prepare('SELECT konsument.ID, konsument.Name, buchung.Betrag, buchung.Datum FROM `buchung` INNER JOIN konsument ON buchung.KonsumentID = konsument.ID');
+        if ($roleAndName['Rolle'] == 'Admin') {
+            $stmt = $DB_con->prepare('SELECT Konsument.ID, Konsument.Name, Buchung.Betrag, Buchung.Datum, Buchungsart.Bezeichnung AS Art FROM `Buchung` INNER JOIN Konsument ON Buchung.KonsumentID = Konsument.ID INNER JOIN Buchungsart ON Buchung.BuchungsArt = Buchungsart.ID');
             $stmt->execute();
             $userRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -67,12 +67,18 @@ try {
         <br>';
             if ($stmt->rowCount() > 0) {
                 echo '<table class="table table-striped">';
-                echo '<th>Name</th><th>Wert</th><th>Datum</th>';
+                echo '<th>Name</th><th>Wert</th><th>Datum</th><th>Buchungsart</th>';
                 for ($i = 0; $i < $stmt->rowCount(); $i++) {
                     echo '<tr>';
                     echo '<td>' . $userRow[$i]['Name'] . '</td>';
                     echo '<td>' . $userRow[$i]['Betrag'] . '€</td>';
                     echo '<td>' . $userRow[$i]['Datum'] . '</td>';
+                    if ($userRow[$i]['Art'] == 1) {
+                        echo '<td> Überweisung </td>';
+                    }
+                    else {
+                        echo '<td> Abbuchung </td>';
+                    }
                     echo '</tr>';
                     echo '</tr>';
                 }
@@ -81,8 +87,8 @@ try {
                 echo 'Es wurden bisher noch keine Transaktionen ausgeführt.';
             }
         } else {
-            $stmt = $DB_con->prepare('SELECT konsument.ID, konsument.Name, buchung.Betrag, buchung.Datum FROM `buchung` INNER JOIN konsument ON buchung.KonsumentID = konsument.ID
-                WHERE konsument.Name = :username');
+            $stmt = $DB_con->prepare('SELECT Konsument.ID, Konsument.Name, Buchung.Betrag, Buchung.Datum, Buchung.BuchungsArt AS Art FROM `Buchung` INNER JOIN Konsument ON Buchung.KonsumentID = Konsument.ID INNER JOIN Buchungsart ON Buchung.BuchungsArt = Buchungsart.ID
+                WHERE Konsument.Name = :username');
             $stmt->bindParam(':username', $username);
             $stmt->execute();
             $userRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -92,12 +98,18 @@ try {
         <br>';
             if ($stmt->rowCount() > 0) {
                 echo '<table class="table table-striped">';
-                echo '<th>Name</th><th>Wert</th><th>Datum</th>';
+                echo '<th>Name</th><th>Wert</th><th>Datum</th><th>Buchungsart</th>';
                 for ($i = 0; $i < $stmt->rowCount(); $i++) {
                     echo '<tr>';
                     echo '<td>' . $userRow[$i]['Name'] . '</td>';
                     echo '<td>' . $userRow[$i]['Betrag'] . '€</td>';
                     echo '<td>' . $userRow[$i]['Datum'] . '</td>';
+                    if ($userRow[$i]['Art'] == 1) {
+                        echo '<td> Überweisung </td>';
+                    }
+                    else {
+                        echo '<td> Abbuchung </td>';
+                    }
                     echo '</tr>';
                     echo '</tr>';
                 }

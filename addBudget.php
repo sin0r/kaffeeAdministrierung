@@ -45,7 +45,7 @@ Hier können Sie Ihr Guthaben um den gewünschten Betrag erweitern.
     $DB_con = new PDO("mysql:host={$DB_host};dbname={$DB_name}", $DB_user, $DB_pass);
     $DB_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmtToGetConsumerId = $DB_con->prepare('SELECT konsument.ID from konsument WHERE konsument.Name = :username');
+    $stmtToGetConsumerId = $DB_con->prepare('SELECT Konsument.ID from Konsument WHERE Konsument.Name = :username');
     $stmtToGetConsumerId->execute([':username' => $username]);
     $userRowToGetConsumerId = $stmtToGetConsumerId->fetch(PDO::FETCH_ASSOC);
     $userId = $userRowToGetConsumerId['ID'];
@@ -53,8 +53,8 @@ Hier können Sie Ihr Guthaben um den gewünschten Betrag erweitern.
     try {
 
         try {
-            $stmt = $DB_con->prepare('SELECT buchung.Betrag, buchung.BuchungsArt FROM `buchung`
-            INNER JOIN konsument ON buchung.KonsumentID = konsument.ID WHERE konsument.Name = :username');
+            $stmt = $DB_con->prepare('SELECT Buchung.Betrag, Buchung.BuchungsArt FROM `Buchung`
+            INNER JOIN Konsument ON Buchung.KonsumentID = Konsument.ID WHERE Konsument.Name = :username');
             $stmt->execute(array(':username' => $username));
             $userRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $budget = 0;
@@ -62,7 +62,7 @@ Hier können Sie Ihr Guthaben um den gewünschten Betrag erweitern.
                 // var_dump($userRow);
 
                 for ($i = 0; $i < $stmt->rowCount(); $i++) {
-                    if ($userRow[$i]['art_fk'] == 1) {
+                    if ($userRow[$i]['BuchungsArt'] == 1) {
                         $budget = $budget + $userRow[$i]['Betrag'];
                     } else {
                         $budget = $budget - $userRow[$i]['Betrag'];
@@ -105,8 +105,8 @@ Hier können Sie Ihr Guthaben um den gewünschten Betrag erweitern.
 </html>
 <?php
 if(isset($_POST['doTransaction'])){ // button name
-    $transactionStmt = $DB_con->prepare('INSERT INTO buchung (KonsumentID, BuchungsArt, Betrag, Datum)
-        VALUES (:konsumentId, :artId, :betrag, CURRENT_TIMESTAMP)');
+    $transactionStmt = $DB_con->prepare('INSERT INTO Buchung (KonsumentID, BuchungsArt, Datum, Betrag)
+        VALUES (:konsumentId, :artId, CURRENT_TIMESTAMP, :betrag)');
     $transactionStmt->execute([':betrag' => $_POST["amount"], ':konsumentId' => $userId, 'artId' => $_POST['transaction']]);
     echo 'Ihr Guthaben wurde erfolgreich aktualisiert.';
     //header("Location = addBudgetSuccess.php");

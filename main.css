@@ -16,7 +16,6 @@ body {
 }
 
 .content {
-    max-width: 550px;
     margin: auto;
 }
 
@@ -27,6 +26,13 @@ body {
 
 
 .scrollable {
-    height: 90%;
-    overflow: auto;
+    height: 550px;
+    overflow: scroll;
+}
+
+.hallo {
+    padding: 5px;
+    border-style: solid;
+    border-color: #808080;
+    background-color: #dadada;
 }
