@@ -10,37 +10,23 @@ $DB_name = "coffeeAdministration";
 $DB_con = new PDO("mysql:host={$DB_host};dbname={$DB_name}", $DB_user, $DB_pass);
 $DB_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$stmtForRealAmount = "SELECT Istguthaben, Datum FROM Gesamtguthaben";
-$getRealAmountStmt = $DB_con->prepare($stmtForRealAmount);
-$getRealAmountStmt->execute();
-$userRowRealAmount = $getRealAmountStmt->fetchAll(PDO::FETCH_ASSOC);
-
-$stmtForShouldAmount = "SELECT Sollguthaben, Datum FROM Gesamtguthaben";
-$getShouldAmountStmt = $DB_con->prepare($stmtForShouldAmount);
-$getShouldAmountStmt->execute();
-$userRowShouldAmount = $getShouldAmountStmt->fetchAll(PDO::FETCH_ASSOC);
+$stmtForBudgets = "SELECT Istguthaben, Sollguthaben, Datum FROM ( SELECT * FROM Gesamtguthaben ORDER BY Gesamtguthaben.ID DESC limit 6 ) GG ORDER BY GG.ID ASC";
+$getBudgetStmt = $DB_con->prepare($stmtForBudgets);
+$getBudgetStmt->execute();
+$userRowBudget = $getBudgetStmt->fetchAll(PDO::FETCH_ASSOC);
 
 $shouldAmounts = [];
 $realAmounts = [];
 $dates = [];
 
-for ($i = 0; $i < count($userRowShouldAmount)-1; $i++) {
-    for ($j = 0; $j < count($userRowShouldAmount[$i])-1; $j++) {
-        $shouldAmounts[$i] = $userRowShouldAmount[$i]['Sollguthaben'];
-    }
+for ($i = 0; $i < count($userRowBudget); $i++) {
+    for ($j = 0; $j < count($userRowBudget[$i]); $j++) {
 
-}
+        $shouldAmounts[$i] = $userRowBudget[$i]['Sollguthaben'];
+        $realAmounts[$i] = $userRowBudget[$i]['Istguthaben'];
 
-for ($i = 0; $i < count($userRowRealAmount)-1; $i++) {
-    for ($j = 0; $j < count($userRowRealAmount[$i])-1; $j++) {
-        $realAmounts[$i] = $userRowRealAmount[$i]['Istguthaben'];
-    }
-
-}
-
-for ($i = 0; $i < count($userRowShouldAmount)-1; $i++) {
-    for ($j = 0; $j < count($userRowShouldAmount[$i])-1; $j++) {
-        $dates[$i] = $userRowShouldAmount[$i]['Datum'];
+        $time = strtotime($userRowBudget[$i]['Datum']);
+        $dates[$i] = date('d.m',$time);
     }
 
 }
@@ -63,6 +49,7 @@ $lineplot2->SetLegend("Istguthaben");
 //$lineplot->value->Show();
 //$lineplot2->value->Show();
 $graph->xaxis->SetTickLabels($dates);
+$graph->legend->SetPos(0.41,0.9999,'center','bottom');
 
 
 
