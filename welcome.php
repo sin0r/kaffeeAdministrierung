@@ -90,7 +90,7 @@ if ($roleAndName != false) {
                 echo '<div class="alert alert-warning">Ihr Guthaben ist bald aufgebraucht.</div>';
             }
             elseif ($budget < 0) {
-                echo '<div class="alert alert-danger">Sie sind bereits im Minus und sollten Ihr Guthaben bald auffüllen.</div>';
+                echo '<div class="alert alert-danger">Sie sind bereits im Minus und sollten Ihr Guthaben schnellstmöglich auffüllen.</div>';
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -144,7 +144,7 @@ if ($roleAndName != false) {
             $roleAndName = $statementToGetUserRoleAndName->fetch(PDO::FETCH_ASSOC);
 
             if ($roleAndName['Rolle'] == 'Admin') {
-                $stmt = $DB_con->prepare('SELECT Konsument.ID, Konsument.Name, Buchung.Betrag, Buchung.Datum, Buchungsart.Bezeichnung AS Art FROM `Buchung` INNER JOIN Konsument ON Buchung.KonsumentID = Konsument.ID INNER JOIN Buchungsart ON Buchung.BuchungsArt = Buchungsart.ID');
+                $stmt = $DB_con->prepare('SELECT Konsument.ID, Konsument.Name, Buchung.Betrag, Buchung.Datum, Buchung.BuchungsArt AS Art FROM `Buchung` INNER JOIN Konsument ON Buchung.KonsumentID = Konsument.ID INNER JOIN Buchungsart ON Buchung.BuchungsArt = Buchungsart.ID ORDER BY Buchung.Datum DESC');
                 $stmt->execute();
                 $userRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -173,7 +173,7 @@ if ($roleAndName != false) {
                 }
             } else {
                 $stmt = $DB_con->prepare('SELECT Konsument.ID, Konsument.Name, Buchung.Betrag, Buchung.Datum, Buchung.BuchungsArt AS Art FROM `Buchung` INNER JOIN Konsument ON Buchung.KonsumentID = Konsument.ID INNER JOIN Buchungsart ON Buchung.BuchungsArt = Buchungsart.ID
-                WHERE Konsument.Name = :username');
+                WHERE Konsument.Name = :username ORDER BY Buchung.Datum DESC');
                 $stmt->bindParam(':username', $username);
                 $stmt->execute();
                 $userRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -186,7 +186,7 @@ if ($roleAndName != false) {
                     for ($i = 0; $i < $stmt->rowCount(); $i++) {
                         echo '<tr>';
                         echo '<td>' . $userRow[$i]['Betrag'] . '€</td>';
-                        echo '<td>' . $userRow[$i]['Datum'] . '</td>';
+                        echo '<td>' . date($userRow[$i]['Datum']) . '</td>';  // $dates[$i] = date('d.m',$time);
                         if ($userRow[$i]['Art'] == 1) {
                             echo '<td> Überweisung </td>';
                         }

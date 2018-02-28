@@ -43,11 +43,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $_SESSION['username'] = $username;
                         header("location: welcome.php");
                     } else {
-                        echo '<div class="alert-danger">Bitte geben Sie einen validen Benutzernamen und Passwort ein.</div>';
+                        echo '<div class="alert-danger">Bitte geben Sie einen validen Benutzernamen und Pin ein.</div>';
                     }
 
                 } else {
-                    echo '<div class="alert-danger">Bitte geben Sie einen validen Benutzernamen und Passwort ein.</div>';
+                    echo '<div class="alert-danger">Bitte geben Sie einen validen Benutzernamen und Pin ein.</div>';
                 }
             } catch (PDOException $e) {
                 echo $e->getMessage();
